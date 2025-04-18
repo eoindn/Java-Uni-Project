@@ -1,4 +1,4 @@
-package org.example.demo6;
+package org.example.demo6.veiw;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +10,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.example.demo6.database.ProcessDatabase;
+import org.example.demo6.service.Process;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,10 +19,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ProcessingScreen {
 
@@ -30,7 +28,7 @@ public class ProcessingScreen {
     private TextField orderStatusField;
     private TextField customerNameField;
     private TextField productIDField;
-    private Process processingManager;
+    private org.example.demo6.service.Process processingManager;
 
     public ProcessingScreen() {
         processingManager = new Process();

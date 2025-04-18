@@ -1,4 +1,4 @@
-package org.example.demo6;
+package org.example.demo6.application;
 
 import javafx.application.Application;
 import javafx.scene.Node;
@@ -6,6 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.example.demo6.database.DatabaseManager;
+import org.example.demo6.database.InventoryTable;
+import org.example.demo6.database.ProcessDatabase;
+import org.example.demo6.database.ProcessTable;
+import org.example.demo6.veiw.InventoryManagementScreen;
+import org.example.demo6.veiw.ProcessingScreen;
 
 public class ShipmentManagementApp extends Application {
 

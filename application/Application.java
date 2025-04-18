@@ -1,4 +1,4 @@
-package org.example.demo6;
+package org.example.demo6.application;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

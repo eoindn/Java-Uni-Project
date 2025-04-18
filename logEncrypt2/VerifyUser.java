@@ -1,4 +1,6 @@
-package org.example.demo6;
+package org.example.demo6.logEncrypt2;
+
+import org.example.demo6.database.LoginBase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

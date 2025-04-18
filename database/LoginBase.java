@@ -1,4 +1,4 @@
-package org.example.demo6;
+package org.example.demo6.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

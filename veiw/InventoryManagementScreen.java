@@ -1,4 +1,4 @@
-package org.example.demo6;
+package org.example.demo6.veiw;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.example.demo6.service.Inventory;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

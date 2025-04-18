@@ -1,4 +1,6 @@
-package org.example.demo6;
+package org.example.demo6.service;
+
+import org.example.demo6.database.ProcessDatabase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Process extends Inventory{
+public class Process extends Inventory {
 
 
     String orderDate;
@@ -39,7 +41,7 @@ public class Process extends Inventory{
     public void makeOrder(String orderID,String orderDate, String oderStatus, String customerName,String ProductID){
         String sql = "INSERT INTO ProcessTable (OrderID,OrderDate, OrderStatus, CustomerName,ProductID) VALUES (?, ?, ?, ?,?)";
         try (Connection conn = ProcessDatabase.connect();
-        PreparedStatement pstmt = conn.prepareStatement(sql)) {
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, orderID);
             pstmt.setString(2, orderDate);
             pstmt.setString(3, oderStatus);

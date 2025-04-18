@@ -1,12 +1,14 @@
 package org.example.demo6;
 
-import org.example.demo6.Inventory;
-import org.example.demo6.ShippingDetails;
-
-import javax.security.auth.login.LoginContext;
-import java.security.KeyStore;
-import java.util.Scanner;
-import java.util.SortedMap;
+import org.example.demo6.database.InventoryTable;
+import org.example.demo6.database.LoginTable;
+import org.example.demo6.database.ProcessTable;
+import org.example.demo6.database.ShippingTable;
+import org.example.demo6.logEncrypt2.Login;
+import org.example.demo6.logEncrypt2.VerifyUser;
+import org.example.demo6.service.Inventory;
+import org.example.demo6.service.Process;
+import org.example.demo6.service.ShippingDetails;
 
 import java.util.Scanner;
 
@@ -30,7 +32,7 @@ public class Main {
         boolean flag1 = true;
         Scanner scanner = new Scanner(System.in);
         Inventory inventory = new Inventory();
-        Process process = new Process();
+        org.example.demo6.service.Process process = new Process();
         ShippingDetails shippingDetails = new ShippingDetails();
         Login login = new Login();
 

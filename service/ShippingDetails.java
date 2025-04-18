@@ -1,4 +1,6 @@
-package org.example.demo6;
+package org.example.demo6.service;
+
+import org.example.demo6.database.ShippingDataBase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +18,7 @@ public class ShippingDetails {
         String sql = "INSERT INTO ShipmentsTable (ShipmentID, ProductID, Destination, Status, ShipmentDate) VALUES (?, ?, ?, ?,?)";
 
         try(Connection conn = ShippingDataBase.connect();
-        PreparedStatement pstmt = conn.prepareStatement(sql)){
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
             pstmt.setInt(1, shipmentId);
             pstmt.setInt(2, productID);
             pstmt.setString(3, destination);

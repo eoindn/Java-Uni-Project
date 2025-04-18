@@ -1,4 +1,6 @@
-package org.example.demo6;
+package org.example.demo6.service;
+
+import org.example.demo6.database.DatabaseManager;
 
 import java.sql.*;
 import java.util.ArrayList;
