@@ -87,6 +87,33 @@ public class ProcessingScreen {
 
         table.getColumns().addAll(orderIDCol, orderDateCol, orderStatusCol, customerNameCol, productIDCol);
 
+        orderStatusCol.setCellFactory(column -> {
+            return new TableCell<ProcessingScreen.ProcessItem, String>() {
+                @Override
+                protected void updateItem(String status, boolean empty) {
+                    super.updateItem(status, empty);
+
+                    if (status == null || empty) {
+                        setText(null);
+                        setStyle("");
+                    } else {
+                        setText(status);
+
+                        // diff colours based on status
+                        if (status.equalsIgnoreCase("pending") || status.equalsIgnoreCase("in transit")) {
+                            setStyle("-fx-text-fill: orange; -fx-font-weight: bold;");
+                        } else if (status.equalsIgnoreCase("delivered")) {
+                            setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
+                        } else if (status.equalsIgnoreCase("cancelled")) {
+                            setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+                        } else {
+                            setStyle("");
+                        }
+                    }
+                }
+            };
+        });
+
         // Responsiveness
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 

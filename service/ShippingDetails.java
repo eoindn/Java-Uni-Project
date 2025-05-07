@@ -14,13 +14,13 @@ public class ShippingDetails {
     private Map<Integer, Map<String, Object>> shipments = new HashMap<>();
 
 
-    public void addShipment(int shipmentId, int productID, String destination, String status,String date) {
+    public void addShipment(String shipmentId, String productID, String destination, String status,String date) {
         String sql = "INSERT INTO ShipmentsTable (ShipmentID, ProductID, Destination, Status, ShipmentDate) VALUES (?, ?, ?, ?,?)";
 
         try(Connection conn = ShippingDataBase.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setInt(1, shipmentId);
-            pstmt.setInt(2, productID);
+            pstmt.setString(1, shipmentId);
+            pstmt.setString(2, productID);
             pstmt.setString(3, destination);
             pstmt.setString(4, status);
             pstmt.setString(5, date);
@@ -44,7 +44,7 @@ public class ShippingDetails {
     }
 
 
-    public void updateShipment(int shipmentId, String newStatus) {
+    public void updateShipment(String shipmentId, String newStatus) {
         if (shipments.containsKey(shipmentId)) {
             shipments.get(shipmentId).put("status", newStatus);
         }

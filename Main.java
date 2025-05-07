@@ -180,7 +180,7 @@ public class Main {
                         System.out.println("Shipment ID,Product ID, Destination, Status");
 
                         System.out.println("Enter a shipment id");
-                        int shipmentID = scanner.nextInt();
+                        String shipmentID = String.valueOf(scanner.nextInt());
                         scanner.nextLine();
 
                         System.out.println("Enter a product id");
@@ -199,7 +199,7 @@ public class Main {
                         scanner.nextLine();
 
 
-                        shippingDetails.addShipment(shipmentID, ProductID, destination, status, shipping_date);
+                        shippingDetails.addShipment(shipmentID , String.valueOf(ProductID),destination ,status, shipping_date);
                         System.out.println("Successfully added!");
                         break;
                     case 8:
@@ -219,7 +219,7 @@ public class Main {
                         String newStatus = scanner.next();
                         scanner.nextLine();
 
-                        shippingDetails.updateShipment(shipmentIDForUpdate, newStatus);
+                        shippingDetails.updateShipment(String.valueOf(shipmentIDForUpdate), newStatus);
                         System.out.println("Successfully updated!");
                         break;
                     case 10:

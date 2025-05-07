@@ -6,27 +6,34 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.example.demo6.database.DatabaseManager;
-import org.example.demo6.database.InventoryTable;
-import org.example.demo6.database.ProcessDatabase;
-import org.example.demo6.database.ProcessTable;
+import org.example.demo6.database.*;
+import org.example.demo6.veiw.DashboardScreen;
 import org.example.demo6.veiw.InventoryManagementScreen;
 import org.example.demo6.veiw.ProcessingScreen;
+import org.example.demo6.veiw.shippingScreen;
+import org.example.demo6.veiw.DashboardScreen;
 
 public class ShipmentManagementApp extends Application {
 
     private InventoryManagementScreen inventoryScreen;
     private ProcessingScreen processingScreen;
+    private shippingScreen ShippingScreen;
+    private DashboardScreen dashboardScreen;
 
     @Override
     public void start(Stage primaryStage) {
         // Initialise components
         inventoryScreen = new InventoryManagementScreen();
         processingScreen = new ProcessingScreen();
+        ShippingScreen = new shippingScreen();
+        dashboardScreen = new DashboardScreen();
 
 
         InventoryTable.createTable();
         ProcessTable.createTable();
+        ShippingTable.createTable();
+
+
 
         BorderPane root = new BorderPane();
 
@@ -39,7 +46,7 @@ public class ShipmentManagementApp extends Application {
         root.setCenter(tabPane);
 
         Scene scene = new Scene(root, 1200, 700);
-        primaryStage.setTitle("Shipment Management System");
+        primaryStage.setTitle("Shipment Management System" );
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -61,11 +68,17 @@ public class ShipmentManagementApp extends Application {
         MenuItem initProcessItem = new MenuItem("Initialize Process Table");
         initProcessItem.setOnAction(e -> ProcessTable.createTable());
 
+        MenuItem initShippingItem = new MenuItem("Initialise Shipping Table");
+        initShippingItem.setOnAction(e -> ShippingTable.createTable());
+
         MenuItem testInventoryConnItem = new MenuItem("Test Inventory Connection");
         testInventoryConnItem.setOnAction(e -> DatabaseManager.connect());
 
         MenuItem testProcessConnItem = new MenuItem("Test Process Connection");
         testProcessConnItem.setOnAction(e -> ProcessDatabase.connect());
+
+        MenuItem testShippingConnItem = new MenuItem("Test shipping DB connection");
+        testShippingConnItem.setOnAction(e -> ShippingDataBase.connect());
 
 
 
@@ -74,9 +87,11 @@ public class ShipmentManagementApp extends Application {
         dbMenu.getItems().addAll(
                 initInventoryItem,
                 initProcessItem,
+                initShippingItem,
                 new SeparatorMenuItem(),
                 testInventoryConnItem,
                 testProcessConnItem,
+                testShippingConnItem,
                 new SeparatorMenuItem()
 
 
@@ -90,24 +105,27 @@ public class ShipmentManagementApp extends Application {
         TabPane tabPane = new TabPane();
 
 
-        Tab dashboardTab = new Tab("Dashboard");
+
         Tab ordersTab = new Tab("Orders");
+        Tab chartTab = new Tab("Charts");
         Tab inventoryTab = new Tab("Inventory");
         Tab shipmentsTab = new Tab("Shipments");
+        Tab dashBoardTab = new Tab("Dashboard");
 
-        dashboardTab.setContent(createDashboardUI());
+        chartTab.setContent(DashboardScreen.createDashboardContent());
+        dashBoardTab.setContent(createDashboardUI());
         ordersTab.setContent(processingScreen.createProcessContent());
         inventoryTab.setContent(inventoryScreen.createInventoryContent());
-        shipmentsTab.setContent(createShipmentsUI());
+        shipmentsTab.setContent(ShippingScreen.createShippingContent());
 
         // non-closable
-        dashboardTab.setClosable(false);
+        chartTab.setClosable(false);
         ordersTab.setClosable(false);
         inventoryTab.setClosable(false);
         shipmentsTab.setClosable(false);
 
         //tabs to the tab pane
-        tabPane.getTabs().addAll(dashboardTab, ordersTab, inventoryTab, shipmentsTab);
+        tabPane.getTabs().addAll(dashBoardTab, chartTab,ordersTab, inventoryTab, shipmentsTab);
 
         return tabPane;
     }

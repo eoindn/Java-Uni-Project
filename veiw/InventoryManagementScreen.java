@@ -89,6 +89,31 @@ public class InventoryManagementScreen {
         table.getColumns().addAll(idColumn, nameColumn, quantityColumn,
                 priceColumn, locationColumn, dateColumn);
 
+        quantityColumn.setCellFactory(column -> {
+            return new TableCell<InventoryItem,Integer>() {
+
+                protected void updateItem(Integer quantity, boolean empty) {
+                    super.updateItem(quantity, empty);
+
+                    if (quantity == null || empty) {
+                        setText(null);
+                        setStyle("");
+                    } else {
+                        setText(String.valueOf(quantity));
+
+                        // diff colours based on status
+                        if (quantity >= 1 ) {
+                            setStyle("-fx-text-fill: orange; -fx-font-weight: bold;");
+                        }
+
+                        else {
+                            setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+                        }
+                    }
+                }
+            };
+        });
+
         // Make table columns resize with the table
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
