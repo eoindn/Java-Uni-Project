@@ -151,9 +151,11 @@ public class InventoryManagementScreen {
         // Create buttons
         Button addButton = new Button("Add Product");
         addButton.setOnAction(e -> handleAddProduct());
+        addButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
 
         Button clearButton = new Button("Clear Form");
         clearButton.setOnAction(e -> clearForm());
+        clearButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white;");
 
         // Add form fields to the grid
         form.add(new Label("Product Name:"), 0, 0);
@@ -188,12 +190,16 @@ public class InventoryManagementScreen {
     private HBox createTableActionButtons(){
         Button refreshButton = new Button("Refresh");
         refreshButton.setOnAction(e -> refreshInventoryTable());
+        refreshButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
 
         Button removeButton = new Button("Remove");
-        removeButton.setOnAction(e -> handleRemoveProduct()); // Fixed method name
+        removeButton.setOnAction(e -> handleRemoveProduct());
+        removeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white;");
 
         Button decreaseButton = new Button("Decrease Quantity");
         decreaseButton.setOnAction(e -> handleDecreaseQuantity());
+        decreaseButton.setStyle("-fx-background-color: #FF9800; -fx-text-fill: white;");
+
 
         HBox buttonBox = new HBox(10);
         buttonBox.getChildren().addAll(refreshButton, removeButton, decreaseButton);

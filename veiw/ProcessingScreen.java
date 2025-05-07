@@ -148,15 +148,19 @@ public class ProcessingScreen {
         //  buttons
         Button addButton = new Button("Add Order");
         addButton.setOnAction(e -> handleAddOrder());
+        addButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
 
         Button clearButton = new Button("Clear Form");
         clearButton.setOnAction(e -> handleClearForm());
+        clearButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white;");
 
         Button updateButton = new Button("Update Order");
         updateButton.setOnAction(e -> handleUpdateOrder());
+        updateButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
 
         Button selectButton = new Button("Select Order");
         selectButton.setOnAction(e -> handleSelectOrder());
+        selectButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
 
         // some fields to form
         form.add(new Label("Order Date:"), 0, 0);
@@ -186,13 +190,16 @@ public class ProcessingScreen {
     private HBox createTableActionButtons() {
         Button refreshButton = new Button("Refresh");
         refreshButton.setOnAction(e -> refreshProcessTable());
+        refreshButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
 
         Button selectButton = new Button("Select for Edit");
         selectButton.setOnAction(e -> handleSelectOrder());
+        selectButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
 
         HBox buttonBox = new HBox(10);
         buttonBox.getChildren().addAll(refreshButton, selectButton);
         buttonBox.setPadding(new Insets(5, 0, 0, 0)); // Add some padding
+        buttonBox.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 10; -fx-border-color: #ccc; -fx-border-width: 1px; -fx-border-radius: 5px;");
 
         return buttonBox;
     }

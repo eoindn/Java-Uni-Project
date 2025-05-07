@@ -88,7 +88,7 @@ public class shippingScreen {
 
 
 
-        // Load initial data after creating the table
+
         refreshShippingTable();
 
         return borderPane;
